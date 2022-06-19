@@ -1,7 +1,4 @@
 import {
-  StyleSheet,
-  Text,
-  View,
   StatusBar,
   FlatList,
   ActivityIndicator,
@@ -9,7 +6,7 @@ import {
 } from "react-native";
 import React, { useState, useEffect, useRef } from "react";
 import { PokeCard, Header } from "../components";
-import { COLORS } from "../constants";
+import styles from "../styles/Home";
 import axios from "axios";
 
 axios.defaults.baseURL = "https://misqke-pokemon-api.herokuapp.com/api/";
@@ -45,26 +42,3 @@ const Home = () => {
 };
 
 export default Home;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: COLORS.white,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  list: {
-    flex: 1,
-    width: "100%",
-  },
-  listContent: {
-    padding: 8,
-    window: "100%",
-    position: "relative",
-    alignItems: "center",
-  },
-  listCol: {
-    justifyContent: "space-evenly",
-    width: "100%",
-  },
-});

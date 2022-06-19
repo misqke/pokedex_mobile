@@ -2,7 +2,6 @@ import {
   View,
   Text,
   SafeAreaView,
-  StyleSheet,
   StatusBar,
   TouchableOpacity,
   Image,
@@ -10,6 +9,7 @@ import {
   ScrollView,
   Pressable,
 } from "react-native";
+import styles from "../styles/Pokemon";
 import { TypeBubble } from "../components";
 import { COLORS } from "../constants";
 import blendColors from "../util/colorBlender";
@@ -132,9 +132,49 @@ const Pokemon = ({ route, navigation }) => {
           onScroll={(e) => handleScroll(e)}
           scrollEventThrottle={40}
         >
-          <View style={[styles.cardContent]}></View>
-          <View style={[styles.cardContent]}></View>
-          <View style={[styles.cardContent]}></View>
+          <View style={[styles.cardContent, { width }]}>
+            <Text
+              style={styles.category}
+            >{`${pokemon.info[3].value} pokemon`}</Text>
+            <View style={styles.descBox}>
+              <Text style={styles.descText}>{pokemon.desc1}</Text>
+              {pokemon.desc1 !== pokemon.desc2 && (
+                <Text style={styles.descText}>{pokemon.desc2}</Text>
+              )}
+            </View>
+            <View style={styles.row}>
+              <View style={styles.colBox}>
+                <Text style={styles.underline}>Height</Text>
+                <Text>{pokemon.info[0].value}</Text>
+              </View>
+              <View style={styles.colBox}>
+                <Text style={styles.underline}>Wieght</Text>
+                <Text>{pokemon.info[1].value}</Text>
+              </View>
+              <View style={styles.colBox}>
+                <Text style={styles.underline}>Gender</Text>
+                <Text>
+                  {Array.isArray(pokemon.info[2].value)
+                    ? pokemon.info[2].value.join(" or ")
+                    : pokemon.info[2].value}
+                </Text>
+              </View>
+            </View>
+            <View style={styles.weaknesses}>
+              <Text style={styles.underline}>Weaknesses</Text>
+              <View style={styles.weaknessList}>
+                {pokemon.weaknesses.map((weakness) => (
+                  <TypeBubble
+                    type={weakness}
+                    key={weakness}
+                    backgroundColor={COLORS[weakness]}
+                  />
+                ))}
+              </View>
+            </View>
+          </View>
+          <View style={[styles.cardContent, { width }]}></View>
+          <View style={[styles.cardContent, { width }]}></View>
         </ScrollView>
       </Animated.View>
     </SafeAreaView>
@@ -142,52 +182,3 @@ const Pokemon = ({ route, navigation }) => {
 };
 
 export default Pokemon;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: 16,
-  },
-  title: {
-    fontSize: 24,
-    color: COLORS.white,
-    fontWeight: "600",
-  },
-  image: {
-    width: 100,
-    height: 100,
-    position: "absolute",
-    left: "50%",
-    zIndex: 2,
-  },
-  card: {
-    backgroundColor: COLORS.white,
-    position: "absolute",
-    left: 0,
-    right: 0,
-    borderTopRightRadius: 16,
-    borderTopLeftRadius: 16,
-    paddingTop: 20,
-  },
-  scroller: {
-    height: "100%",
-  },
-  headerContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-evenly",
-  },
-  headerBtn: {
-    padding: 6,
-  },
-  headerBtnActive: {
-    borderBottomColor: "blue",
-    borderBottomWidth: 1,
-    borderStyle: "solid",
-  },
-});
