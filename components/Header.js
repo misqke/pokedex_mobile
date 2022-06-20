@@ -10,7 +10,9 @@ const Header = () => {
         padding: 16,
       }}
     >
-      <Text style={{ fontSize: 26, fontWeight: "700" }}>Pokedex</Text>
+      <Text style={{ fontSize: 26, fontWeight: "700", color: "#fff" }}>
+        Pokedex
+      </Text>
     </View>
   );
 };

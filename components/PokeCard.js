@@ -9,13 +9,10 @@ import TypeBubble from "./TypeBubble";
 const PokeCard = ({ pokemon }) => {
   const navigation = useNavigation();
 
-  const backgroundColor =
-    pokemon.type.length === 1
-      ? COLORS[pokemon.type[0]]
-      : blendColors(COLORS[pokemon.type[0]], COLORS[pokemon.type[1]]);
-
   return (
-    <View style={[styles.container, { backgroundColor: backgroundColor }]}>
+    <View
+      style={[styles.container, { backgroundColor: COLORS[pokemon.type[0]] }]}
+    >
       <Pressable
         style={styles.btn}
         onPress={() => navigation.navigate("pokemon", pokemon)}
