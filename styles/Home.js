@@ -22,6 +22,15 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     width: "100%",
   },
+  searchContainer: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    top: 90,
+    zIndex: 4,
+    backgroundColor: COLORS.black,
+  },
 });
 
 export default styles;

@@ -1,11 +1,13 @@
-import { View, Text } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 
-const Header = () => {
+const Header = ({ press }) => {
   return (
     <View
       style={{
-        alignItems: "flex-start",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
         width: "100%",
         padding: 16,
       }}
@@ -13,6 +15,12 @@ const Header = () => {
       <Text style={{ fontSize: 26, fontWeight: "700", color: "#fff" }}>
         Pokedex
       </Text>
+      <TouchableOpacity onPress={() => press()}>
+        <Image
+          source={require("../assets/search.png")}
+          style={{ width: 35, height: 35 }}
+        />
+      </TouchableOpacity>
     </View>
   );
 };

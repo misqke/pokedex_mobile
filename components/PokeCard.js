@@ -3,7 +3,6 @@ import { COLORS } from "../constants";
 import styles from "../styles/PokeCard";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import blendColors from "../util/colorBlender";
 import TypeBubble from "./TypeBubble";
 
 const PokeCard = ({ pokemon }) => {

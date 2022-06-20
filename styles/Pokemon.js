@@ -19,6 +19,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     padding: 16,
   },
+  backBtn: {
+    opacity: 0.5,
+  },
   title: {
     fontSize: 24,
     color: COLORS.white,
@@ -127,6 +130,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     flex: 1,
   },
+  evoRow: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    flex: 1,
+    width: "100%",
+  },
   evoImage: {
     width: 100,
     height: 100,
@@ -135,10 +145,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: "10%",
     left: "50%",
-    width: 200,
-    height: 200,
+    width: 150,
+    height: 150,
     // transform: [{ translateX: -100 }, { translateY: -100 }],
-    opacity: 0.25,
+    opacity: 0.15,
+    zIndex: 0,
   },
   statsTable: {
     width: "95%",
@@ -153,16 +164,18 @@ const styles = StyleSheet.create({
   },
   statTextBox: {
     height: "100%",
-    width: 60,
+    width: 70,
     justifyContent: "center",
+    // alignItems: "center",
   },
   statText: {
     color: COLORS.gray,
+    fontWeight: "600",
   },
   statOutter: {
     flex: 2,
     backgroundColor: COLORS.dark,
-    height: "100%",
+    height: "60%",
     borderRadius: "25%",
     justifyContent: "center",
   },

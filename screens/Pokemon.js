@@ -12,13 +12,13 @@ import {
 import styles from "../styles/Pokemon";
 import { TypeBubble } from "../components";
 import { COLORS } from "../constants";
-import blendColors from "../util/colorBlender";
 import React, { useEffect, useState, useRef } from "react";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withSpring,
   withTiming,
+  withRepeat,
 } from "react-native-reanimated";
 import { RadialGradient } from "react-native-gradients";
 import axios from "axios";
@@ -63,6 +63,7 @@ const Pokemon = ({ route, navigation }) => {
   const topValue = useSharedValue(500);
   const scaleValue = useSharedValue(1);
   const cardTop = useSharedValue(-cardHeight);
+  const rotateValue = useSharedValue(0);
 
   let animatedImage = useAnimatedStyle(() => {
     return {
@@ -75,16 +76,17 @@ const Pokemon = ({ route, navigation }) => {
     };
   });
 
+  let animatedPokeball = useAnimatedStyle(() => {
+    return {
+      transform: [{ rotateZ: `${rotateValue.value}deg` }],
+    };
+  });
+
   let animatedCard = useAnimatedStyle(() => {
     return {
       bottom: withTiming(cardTop.value, { duration: 750 }),
     };
   });
-
-  // const backgroundColor =
-  //   pokemon.type.length === 1
-  //     ? COLORS[pokemon.type[0]]
-  //     : blendColors(COLORS[pokemon.type[0]], COLORS[pokemon.type[1]]);
 
   const handleScroll = (e) => {
     const x = e.nativeEvent.contentOffset.x;
@@ -112,6 +114,11 @@ const Pokemon = ({ route, navigation }) => {
     topValue.value = 115;
     scaleValue.value = 2.3;
     cardTop.value = 0;
+    rotateValue.value = withRepeat(
+      withTiming(720, { duration: 4000 }),
+      -1,
+      true
+    );
   });
 
   return (
@@ -121,17 +128,17 @@ const Pokemon = ({ route, navigation }) => {
         <RadialGradient
           x="50%"
           y="50%"
-          rx="50%"
-          ry="50%"
+          rx="60%"
+          ry="60%"
           colorList={[
             { offset: "0%", color: COLORS[pokemon.type[0]], opacity: "1" },
             { offset: "30%", color: COLORS[pokemon.type[0]], opacity: ".7" },
             { offset: "95%", color: COLORS.black, opacity: "1" },
           ]}
         />
-        <Image
+        <Animated.Image
           source={require("../assets/pokeball.png")}
-          style={styles.pokeball}
+          style={[styles.pokeball, animatedPokeball]}
         />
       </View>
       <Animated.Image
@@ -243,16 +250,19 @@ const Pokemon = ({ route, navigation }) => {
             )}
             <View style={styles.evoContainer}>
               {pokemon.evolutions.map((poki) => (
-                <Pressable
-                  style={styles.evoBtn}
-                  key={poki.num}
-                  onPress={() => handleEvoPress(poki.num)}
-                >
-                  <Image
-                    source={{ uri: poki.img }}
-                    style={[styles.evoImage, { zIndex: 2 }]}
-                  />
-                </Pressable>
+                <View style={styles.evoRow} key={poki.num}>
+                  <Text style={styles.text}>{poki.name}</Text>
+                  <Pressable
+                    style={styles.evoBtn}
+                    onPress={() => handleEvoPress(poki.num)}
+                  >
+                    <Image
+                      source={{ uri: poki.img }}
+                      style={[styles.evoImage, { zIndex: 2 }]}
+                    />
+                  </Pressable>
+                  <Text style={styles.text}>{`# ${poki.num}`}</Text>
+                </View>
               ))}
             </View>
           </View>
