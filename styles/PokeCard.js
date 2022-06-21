@@ -7,27 +7,22 @@ const styles = StyleSheet.create({
     position: "relative",
     height: 125,
     borderRadius: 8,
-    overflow: "hidden",
     marginBottom: 16,
   },
   btn: {
     width: "100%",
     height: "100%",
+    shadowColor: COLORS.black,
+    shadowOffset: { width: 2, height: 4 },
+    shadowOpacity: 0.6,
+    shadowRadius: 4,
+    overflow: "hidden",
   },
-  bg: {
-    position: "absolute",
-    top: 0,
-    bottom: 0,
-    width: "100%",
-    height: "100%",
-    transform: [{ skewX: "51deg" }],
-  },
-  bgTop: {
-    left: "-49%",
-  },
-  bgBot: {
-    left: "49%",
-    right: 0,
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 2,
   },
   title: {
     color: COLORS.white,
@@ -43,17 +38,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    bottom: 0,
-    right: 0,
-    width: 100,
-    height: 100,
+    bottom: -5,
+    right: -5,
   },
   image: {
     width: 100,
     height: 100,
-  },
-  pushed: {
-    position: "static",
+    shadowColor: COLORS.black,
+    shadowOffset: { width: 2, height: 8 },
+    shadowOpacity: 0.8,
+    shadowRadius: 3,
   },
 });
 

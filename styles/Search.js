@@ -67,13 +67,21 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   typeText: { fontSize: 20 },
-  submitBtn: {
+  btn: {
     width: 300,
     padding: 10,
-    backgroundColor: COLORS.gray,
-    alignItems: "center",
     borderRadius: 8,
     opacity: 0.8,
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  submitBtn: {
+    backgroundColor: COLORS.gray,
+  },
+  resetBtn: {
+    borderColor: COLORS.gray,
+    borderWidth: 1,
+    borderStyle: "solid",
   },
   submitText: {
     fontSize: 20,

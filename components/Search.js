@@ -1,5 +1,4 @@
 import { View, Text, TextInput, ScrollView, Pressable } from "react-native";
-import React, { useState, useEffect } from "react";
 import styles from "../styles/Search";
 import { COLORS } from "../constants";
 
@@ -24,10 +23,13 @@ const allTypes = [
   "Water",
 ];
 
-const Search = ({ params, submit, updateInput, updateTypes }) => {
+const Search = ({ params, submit, updateInput, updateTypes, reset }) => {
   return (
     <ScrollView
-      contentContainerStyle={{ alignItems: "center", flex: 1 }}
+      contentContainerStyle={{
+        alignItems: "center",
+        paddingBottom: 10,
+      }}
       style={styles.searchContainer}
     >
       <TextInput
@@ -89,8 +91,14 @@ const Search = ({ params, submit, updateInput, updateTypes }) => {
           ))}
         </View>
       </View>
-      <Pressable style={styles.submitBtn} onPress={() => submit()}>
+      <Pressable
+        style={[styles.btn, styles.submitBtn]}
+        onPress={() => submit()}
+      >
         <Text style={styles.submitText}>Search</Text>
+      </Pressable>
+      <Pressable style={[styles.btn, styles.resetBtn]} onPress={() => reset()}>
+        <Text style={styles.submitText}>Reset</Text>
       </Pressable>
     </ScrollView>
   );

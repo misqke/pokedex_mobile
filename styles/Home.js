@@ -27,9 +27,29 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    top: 90,
+    top: 80,
     zIndex: 4,
+
     backgroundColor: COLORS.black,
+  },
+  topBtn: {
+    position: "absolute",
+    bottom: 10,
+    padding: 6,
+    height: 50,
+    width: 200,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#333a",
+    borderRadius: "25%",
+    display: "none",
+  },
+  topBtnText: {
+    fontSize: 18,
+    color: COLORS.white,
+  },
+  topBtnShown: {
+    display: "flex",
   },
 });
 

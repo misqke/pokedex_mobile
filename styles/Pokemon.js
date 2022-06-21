@@ -4,14 +4,14 @@ import { COLORS } from "../constants";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.dark,
+    backgroundColor: COLORS.black,
   },
   gradient: {
     position: "absolute",
     top: 0,
     left: 0,
     right: 0,
-    bottom: "50%",
+    bottom: "40%",
   },
   header: {
     flexDirection: "row",
@@ -33,12 +33,17 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: "50%",
     zIndex: 2,
+    shadowColor: COLORS.black,
+    shadowOffset: { width: 2, height: 8 },
+    shadowOpacity: 0.8,
+    shadowRadius: 3,
   },
   card: {
     backgroundColor: COLORS.black,
     position: "absolute",
     left: 0,
     right: 0,
+    bottom: 0,
     borderTopRightRadius: 16,
     borderTopLeftRadius: 16,
     borderColor: COLORS.gray,
@@ -138,16 +143,16 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   evoImage: {
+    flex: 1,
     width: 100,
     height: 100,
   },
   pokeball: {
     position: "absolute",
     top: "10%",
-    left: "50%",
+    right: "10%",
     width: 150,
     height: 150,
-    // transform: [{ translateX: -100 }, { translateY: -100 }],
     opacity: 0.15,
     zIndex: 0,
   },
