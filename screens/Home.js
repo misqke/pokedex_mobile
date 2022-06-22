@@ -88,8 +88,8 @@ const Home = () => {
 
   const handleSubmitSearch = async () => {
     setLoading(true);
-    const { data } = await axios.post("search", searchParams);
     setShowSearch(false);
+    const { data } = await axios.post("search", searchParams);
     setPage(1);
     setPages(data.pages);
     setPokemon(data.data);

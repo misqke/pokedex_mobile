@@ -49,10 +49,18 @@ const styles = StyleSheet.create({
     borderColor: COLORS.gray,
     borderBottomWidth: 0,
     borderWidth: 1,
+    alignItems: "center",
     zIndex: 2,
   },
   scroller: {
     height: "100%",
+  },
+  pullTab: {
+    width: 150,
+    height: 5,
+    backgroundColor: COLORS.white,
+    borderRadius: "25%",
+    margin: 10,
   },
   headerContainer: {
     flexDirection: "row",
@@ -63,7 +71,7 @@ const styles = StyleSheet.create({
     color: COLORS.white,
   },
   headerBtn: {
-    padding: 15,
+    paddingBottom: 15,
     flex: 1,
     alignItems: "center",
     borderBottomColor: COLORS.gray,
@@ -75,7 +83,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "blue",
     borderBottomWidth: 1,
     borderStyle: "solid",
-    padding: 15,
+    paddingBottom: 15,
     flex: 1,
     alignItems: "center",
   },

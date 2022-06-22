@@ -96,8 +96,8 @@ const Pokemon = ({ route, navigation }) => {
       }
     })
     .onEnd((e) => {
-      if (cardTop.value < 250) {
-        cardTop.value = withTiming(0, { duration: 100 });
+      if (cardTop.value < 200) {
+        cardTop.value = withTiming(0, { duration: 150 });
       } else {
         // cardTop.value = withTiming(-cardHeight, { duration: 100 });
         navigation.navigate("home");
@@ -187,6 +187,7 @@ const Pokemon = ({ route, navigation }) => {
         <Animated.View
           style={[styles.card, animatedCard, { height: cardHeight }]}
         >
+          <View style={styles.pullTab} />
           <CardHeader active={active} press={handleTabPress} />
           <ScrollView
             ref={cardRef}
